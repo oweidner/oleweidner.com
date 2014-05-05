@@ -19,6 +19,10 @@
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
 
+    <!-- Lightbox css -->
+    <link href="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.css" rel="stylesheet">
+
+
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
     <link href="assets/css/colors/color-74c9be.css" rel="stylesheet">    
@@ -124,7 +128,7 @@
 
 		<div class="row mt">
 			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2265.JPG"><img width="350" src="assets/img/items/IMG_2265.JPG" alt="" />
+				<a class="b-link-fade b-animate-go" data-toggle="lightbox" href="assets/img/items/IMG_2265.JPG"><img width="350" src="assets/img/items/IMG_2265.JPG" alt="" />
 					<div class="b-wrapper">
 					  	<h4 class="b-from-left b-animate b-delay03">Ikea PS Cabinet</h4>
 					  	<p class="b-from-right b-animate b-delay03">Click for larger image.</p>
@@ -139,7 +143,7 @@
 			</div><!-- col-lg-4 -->
 			
 			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2264.JPG"><img width="350" src="assets/img/items/IMG_2264.JPG" alt="" />
+				<a class="b-link-fade b-animate-go" data-toggle="lightbox" href="assets/img/items/IMG_2264.JPG"><img width="350" src="assets/img/items/IMG_2264.JPG" alt="" />
 					<div class="b-wrapper">
 					  	<h4 class="b-from-left b-animate b-delay03">Ikea BOSSE Bar Stools</h4>
 					  	<p class="b-from-right b-animate b-delay03">Click for larger image.</p>
@@ -152,7 +156,7 @@
 			</div><!-- col-lg-4 -->
 			
 			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2271.JPG"><img width="350" src="assets/img/items/IMG_2271.JPG" alt="" />
+				<a class="b-link-fade b-animate-go" data-toggle="lightbox" href="assets/img/items/IMG_2271.JPG"><img width="350" src="assets/img/items/IMG_2271.JPG" alt="" />
 					<div class="b-wrapper">
 					  	<h4 class="b-from-left b-animate b-delay03">Ikea KARLSTAD Armchair</h4>
 					  	<p class="b-from-right b-animate b-delay03">Click for larger image.</p>
@@ -502,7 +506,37 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/bootstrap.min.js"></script>
+ 
+		<script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function ($) {
+
+				// delegate calls to data-toggle="lightbox"
+				$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+					event.preventDefault();
+					return $(this).ekkoLightbox({
+						onShown: function() {
+							if (window.console) {
+								return console.log('Checking our the events huh?');
+							}
+						}
+					});
+				});
+
+				//Programatically call
+				$('#open-image').click(function (e) {
+					e.preventDefault();
+					$(this).ekkoLightbox();
+				});
+				$('#open-youtube').click(function (e) {
+					e.preventDefault();
+					$(this).ekkoLightbox();
+				});
+			});
+		</script>
+
+
+   <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/retina.js"></script>
 
 
