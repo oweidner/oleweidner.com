@@ -20,7 +20,7 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Lightbox css -->
-    <link href="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.css" rel="stylesheet">
+    <link href="assets/css/ekko-lightbox.css" rel="stylesheet">
 
 
     <!-- Custom styles for this template -->
@@ -74,6 +74,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover_pack.js"></script>
     
+    <script src="assets/js/bob.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -86,7 +87,7 @@
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-50420430-1', 'oleweidner.com');
       ga('set', 'page', '/movingsale');
@@ -119,302 +120,329 @@
 
 		<div class="row mt centered ">
 			<div class="col-lg-4 col-lg-offset-4">
-				<h3>What Is Up for Sale?</h3>
+				<h3>Stuff Up for Sale</h3>
 				<hr>
 			</div>
 		</div><!-- /row -->
 
-    <! ========== FIRST ROW ====================================================================================================>    
 
-		<div class="row mt">
-			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" data-toggle="lightbox" href="assets/img/items/IMG_2265.JPG"><img width="350" src="assets/img/items/IMG_2265.JPG" alt="" />
-					<div class="b-wrapper">
-					  	<h4 class="b-from-left b-animate b-delay03">Ikea PS Cabinet</h4>
-					  	<p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-					</div>
-				</a>
-				<p>Ikea PS Cabinet</p>
-				<p class="lead"><a href="http://www.ikea.com/us/en/catalog/products/80100190"
-                >(Ikea Website)</a>
-                </p>
-				<hr-d>
-                <p class="time">Yours for $xx OBO</p>
-			</div><!-- col-lg-4 -->
-			
-			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" data-toggle="lightbox" href="assets/img/items/IMG_2264.JPG"><img width="350" src="assets/img/items/IMG_2264.JPG" alt="" />
-					<div class="b-wrapper">
-					  	<h4 class="b-from-left b-animate b-delay03">Ikea BOSSE Bar Stools</h4>
-					  	<p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-					</div>
-				</a>
-				<p>Ikea BOSSE Bar Stools</p>
-				<p class="lead">Set of two. <a href="http://www.ikea.com/us/en/catalog/products/70087212">(Ikea Website)</a></p>
-				<hr-d>
-                <p class="time">Yours for $xx OBO</p>
-			</div><!-- col-lg-4 -->
-			
-			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" data-toggle="lightbox" href="assets/img/items/IMG_2271.JPG"><img width="350" src="assets/img/items/IMG_2271.JPG" alt="" />
-					<div class="b-wrapper">
-					  	<h4 class="b-from-left b-animate b-delay03">Ikea KARLSTAD Armchair</h4>
-					  	<p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-					</div>
-				</a>
-				<p>Ikea KARLSTAD Armchair</p>
-				<p class="lead"><a href="http://www.ikea.com/us/en/catalog/products/S19840403/#/S29840389">(Ikea Website)</a></p>
-				<hr-d>
-                <p class="time">Yours for $xx OBO</p>
-			</div><!-- col-lg-4 -->
-			
-		</div><!-- /row -->
 
-    <! ========== SECOND ROW ====================================================================================================>    
+    <script>
+        $(window).scroll(function() {
+            $('.si').each(function(){
+            var imagePos = $(this).offset().top;
+    
+            var topOfWindow = $(window).scrollTop();
+                if (imagePos < topOfWindow+400) {
+                    $(this).addClass("slideUp");
+                }
+            });
+        });
+    </script>    
 
-        <div class="row mt">
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2280.JPG"><img width="350" src="assets/img/items/IMG_2280.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Urban Outfitters Carpet (large)</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Urban Outfitters Carpet (small)</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
+    <script>
+
+    var myItems = [
+{
+   "title": "IKEA PS Cabinet",
+   "description": "Probably the most well known IKEA cabinet. Red. Made out of steel. Looks like a locker room locker. Few months old and in perfect condition.",
+   "weblink": "http://www.ikea.com/us/en/catalog/products/80100190",
+   "askingprice": 35.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2265.JPG"
+},
+
+{
+   "title": "Two IKEA BOSSE Barstools",
+   "description": "Way more solid than you would expect it from an IKEA bar stool. Solid wooden construction. Not even a year old and in very good condition. ",
+   "weblink": "http://www.ikea.com/us/en/catalog/products/70087212",
+   "askingprice": 35.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2264.JPG"
+},
+
+{
+   "title": "IKEA KARLSTADT Armchair",
+   "description": "... a.k.a \"the thinking chair\" has helped producing numerous brilliant (and a few not so brilliant) ideas, so it should be well worth the money. Also very comfortable and in good shape.",
+   "weblink": "http://www.ikea.com/us/en/catalog/products/S19840403/#/S29840389",
+   "askingprice": 80.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2271.JPG"
+},
+
+{
+   "title": "IKEA IVAR Shelf Combination",
+   "description": "3 x 35\" wide, 12\" deep and 89\" high monstrosity providing ample storage space. Less than 1 year old and in very good condition.",
+   "weblink": "http://www.ikea.com/us/en/catalog/categories/departments/living_room/11704/",
+   "askingprice": 60.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2389.JPG"
+},
+
+{
+   "title": "Two IKEA TERJE Folding Chairs (red)",
+   "description": "TODO",
+   "weblink": "http://www.ikea.com/us/en/catalog/products/00222440/",
+   "askingprice": 12.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2311.JPG"
+},
+
+{
+   "title": "IKEA TERJE Folding Chair",
+   "description": "TODO",
+   "weblink": "http://www.ikea.com/us/en/catalog/products/00222440/",
+   "askingprice": 6.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2310.JPG"
+},
+
+{
+   "title": "Urban Outfitters Rug (small)",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2267.JPG"
+},
+
+{
+   "title": "Urban Outfitters Rug (small)",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2268.JPG"
+},
+
+{
+   "title": "Urban Outfitters Rug (large)",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2280.JPG"
+},
+
+{
+   "title": "Urban Outfitters Rug (large)",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2286.JPG"
+},
+
+{
+   "title": "SANYO 32\" 720p LCD TV + Apple TV",
+   "description": "Nothing special, but nicely working 720p 32\" TV + Apple TV combo. Good for Netflix streaming and such. Comes with remotes (the one for the TV was half-eaten by a dog once, but is working fine) and cables.",
+   "weblink": "https://www.apple.com/appletv/",
+   "askingprice": 50.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_1962.JPG"
+},
+
+{
+   "title": "ASUS VE208T 20\" LED Monitor",
+   "description": "TODO",
+   "weblink": "http://www.amazon.com/Asus-VE208T-20-Inch-LED-Monitor/dp/B0045JFTXU/ref=sr_1_1?ie=UTF8&qid=1399492746&sr=8-1&keywords=ASUS+VE208T+20%5C%22+LED+Monitor",
+   "askingprice": 40.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2012.JPG"
+},
+
+{
+   "title": "Logitech MK 520 Wireless Combo",
+   "description": "Logitech wirless keyboard, wireless mouse and USB dongle. Works great. ",
+   "weblink": "http://www.logitech.com/en-us/product/wireless-combo-mk520",
+   "askingprice": 15.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2401.JPG"
+},
+
+{
+   "title": "HP Deskjet 5850 Printer",
+   "description": "Somewhat old, BUT with brand-new ink cartridges (which cost way more than the printer). Works just fine for casual print outs - just don't try to print a 200-page PDF on it. Yours for cheap!",
+   "weblink": "http://www.amazon.com/HP-DeskJet-5850-Color-Printer/dp/B0000C9ZJS",
+   "askingprice": 5.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2300.JPG"
+},
+
+{
+   "title": "YAMAHA DSP Receiver HTR-5940",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 25.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_1920.JPG"
+},
+
+{
+   "title": "Logitech Z-680 THX 5-Speaker Set",
+   "description": "Two front, two rear and one center speaker. Few years old but in very good condition. No control unit or sub woofer, but they work great with any regular amplifier (we used them with the Yamaha receiver listed above).",
+   "weblink": "http://www.digitaltrends.com/pc-speaker-reviews/logitech-z-680-review/",
+   "askingprice": 15.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_1951.JPG"
+},
+
+{
+   "title": "Bose 2+1 Speaker Set ",
+   "description": "Bose sub woofer (not pictured) + two satellite speakers. They have all seen better days, but they sound great and are in perfect working condition.",
+   "weblink": "#",
+   "askingprice": 15.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_1957.JPG"
+},
+
+{
+   "title": "Hoover NanoLite Vacuum Cleaner",
+   "description": "Nice vacuum cleaner of the bag-less type (pretty convenient). Few years old but in good condition.",
+   "weblink": "http://hoover.com/products/details/u2440900/nano-lite/",
+   "askingprice": 10.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2301.JPG"
+},
+
+{
+   "title": "Crane Ultrasonic Humidifier",
+   "description": "TODO",
+   "weblink": "http://www.amazon.com/Crane-Ultrasonic-Humidifier-Gallon-output/dp/B005PK7RW4/ref=sr_1_cc_1?s=aps&ie=UTF8&qid=1399492692&sr=1-1-catcorr&keywords=crane+humidifier",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2044.JPG"
+},
+
+{
+   "title": "Sunbeam Ceramic Heater 1,500-watt",
+   "description": "Winter is coming...",
+   "weblink": "http://www.amazon.com/Sunbeam-Ceramic-Heater-Small-Room/dp/B004GBKPYK/ref=sr_1_1?ie=UTF8&qid=1399492800&sr=8-1&keywords=Sunbeam+Ceramic+Heater",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2048.JPG"
+},
+
+{
+   "title": "Large, Heavy-Duty Work Desk",
+   "description": "The type of heavy-duty desk you find at government offices. Steel legs and heavy wooden top. Clear potential to out-live humanity. Size: ",
+   "weblink": "#",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_1594.JPG"
+},
+
+
+{
+   "title": "Three Framed Ernst Haeckel Print(out)s",
+   "description": "Three prints, err... printouts by German naturalist Ernst Haeckel. If you don't like the prints, you might still like the three white IKEA XX frames.",
+   "weblink": "https://en.wikipedia.org/wiki/Kunstformen_der_Natur",
+   "askingprice": 5.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2289.JPG"
+},
+
+{
+   "title": "Pretentious Art Poster #1",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/"
+},
+
+{
+   "title": "Pretentious Art Poster #2",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/"
+},
+
+{
+   "title": "Pretentious Art Poster #3",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 0.00,
+   "obo": "True",
+   "image": "assets/img/items/"
+},
+
+
+{
+   "title": "BodySolid Exercise Ball ",
+   "description": "TODO",
+   "weblink": "http://www.amazon.com/Body-Solid-Tools-BSTSB75-Exercise/dp/B0029Z3R9K/ref=sr_1_1?ie=UTF8&qid=1399492937&sr=8-1&keywords=bodysolid+tools",
+   "askingprice": 5.00,
+   "obo": "True",
+   "image": "assets/img/items/BALL_RED.JPG"
+},
+
+{
+   "title": "Another Ball",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 5.00,
+   "obo": "True",
+   "image": "assets/img/items/"
+},
+
+{
+   "title": "Another ball",
+   "description": "TODO",
+   "weblink": "#",
+   "askingprice": 5.00,
+   "obo": "True",
+   "image": "assets/img/items/"
+},
+
+{
+   "title": "Floor Lamp",
+   "description": "Your typical graduate student appartment floor lamp. Provides decent light and collects dust.",
+   "weblink": "#",
+   "askingprice": 5.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2324.JPG"
+}
+]
+;
             
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2286.JPG"><img width="350" src="assets/img/items/IMG_2286.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Urban Outfitters Carpet (large)</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Urban Outfitters Carpet (large)</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2268.JPG"><img width="350" src="assets/img/items/IMG_2268.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Urban Outfitters Carpet (small)</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Urban Outfitters Carpet (small)</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-        </div><!-- /row -->
+        var itemDisplayTemplate = '<div class="col-lg-4 col-md-4 col-xs-12 desc">\
+                <a class="b-link-fade b-animate-go" data-toggle="lightbox" href="{0}"><img width="350" src="{1}" alt="" />\
+                    <div class="b-wrapper">\
+                        <h4 class="b-from-left b-animate b-delay03">{2}</h4>\
+                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>\
+                    </div>\
+                </a>\
+                <p>{3}</p>\
+                <p class="lead">{4} <a href="{5}">(More info here)</a></p>\
+                <hr-d>\
+                <p class="time">Yours for $ {6} (or best offer)</p>\
+            </div><!-- col-lg-4 -->\
+        ';
 
-    <! ========== THIRD ROW ====================================================================================================>    
+        document.write('<div class="row mt">')
 
-        <div class="row mt">
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2267.JPG"><img width="350" src="assets/img/items/IMG_2267.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Urban Outfitters Carpet (small)</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Urban Outfitters Carpet (small)</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_1962.JPG"><img width="350" src="assets/img/items/IMG_1962.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">SANYO LCD TV + Apple TV</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>SANYO LCD TV + Apple TV</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_1920.JPG"><img width="350" src="assets/img/items/IMG_1920.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">YAMAHA DSP Reveiver HTR-5940</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>YAMAHA DSP Reveiver HTR-5940</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-        </div><!-- /row -->
+        var counter = 1;
 
-    <! ========== FOURTH ROW ====================================================================================================>    
+        for(var i = 0, size = myItems.length; i < size ; i++){
+            var item = myItems[i];
+            var result = bob.string.formatString(itemDisplayTemplate, item["image"], item["image"], item["title"], item["title"], item["description"], item["weblink"], item["askingprice"]);
+            document.write(result);     
 
-        <div class="row mt">
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2311.JPG"><img width="350" src="assets/img/items/IMG_2311.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Two Ikea TERJE Folding Chairs (red)</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Two Ikea TERJE Folding Chairs</p>
-                <p class="lead"><a href="http://www.ikea.com/us/en/catalog/products/00222440/">(IKEA Wbsite)</a></p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
+            counter = counter + 1
 
+            if(counter == 4) {
+                // Three items per row.
+                document.write('</div> <!-- row --> <div class="row mt">');
+                counter = 1;
+            }
+       } 
 
+       document.write('</div> <!-- row -->')
 
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2310.JPG"><img width="350" src="assets/img/items/IMG_2310.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Ikea TERJE Folding Chair</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Ikea TERJE Folding Chair</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-
-
-
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_1594.JPG"><img width="350" src="assets/img/items/IMG_1594.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Heavy-Duty Work Desk</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Heavy-Duty Work Desk</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-
-        </div><!-- /row -->
-
-
-    <! ========== FIFTH ROW ====================================================================================================>    
-
-        <div class="row mt">
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2012.JPG"><img width="350" src="assets/img/items/IMG_2012.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">ASUS VE208T 20" LED Monitor</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>ASUS VE208T 20" LED Monitor</p>
-                <p class="lead"><a href="http://www.ikea.com/us/en/catalog/products/00222440/">(IKEA Wbsite)</a></p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-
-
-
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2301.JPG"><img width="350" src="assets/img/items/IMG_2301.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Hoover Vacuum Cleaner</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Hoover Vacuum Cleaner</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-
-
-
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2289.JPG"><img width="350" src="assets/img/items/IMG_2289.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Three Framed Ernst Haeckel Pictures</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Three Framed Ernst Haeckel Pictures</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-        </div><!-- /row -->
-
-
-
-
-    <! ========== SIXTH ROW ====================================================================================================>    
-
-        <div class="row mt">
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2300.JPG"><img width="350" src="assets/img/items/IMG_2300.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">HP Deskjet 5850 Printer</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>HP Deskjet 5850 Printer</p>
-                <p class="lead"><a href="http://www.ikea.com/us/en/catalog/products/00222440/">(IKEA Wbsite)</a></p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-
-
-
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2044.JPG"><img width="350" src="assets/img/items/IMG_2044.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Crane Ultrasonic Humidifier</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Crane Ultrasonic Humidifier</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-
-
-
-            <div class="col-lg-4 col-md-4 col-xs-12 desc">
-                <a class="b-link-fade b-animate-go" href="assets/img/items/IMG_2048.JPG"><img width="350" src="assets/img/items/IMG_2048.JPG" alt="" />
-                    <div class="b-wrapper">
-                        <h4 class="b-from-left b-animate b-delay03">Sunbeam Ceramic Heater 1,500-watt</h4>
-                        <p class="b-from-right b-animate b-delay03">Click for larger image.</p>
-                    </div>
-                </a>
-                <p>Sunbeam Ceramic Heater 1,500-watt</p>
-                <p class="lead">DESCRIPTION</p>
-                <hr-d>
-                <p class="time">Yours for $xx OBO</p>
-            </div><!-- col-lg-4 -->
-            
-        </div><!-- /row -->
-
-
-
-
+    </script>
 
 
 
@@ -507,7 +535,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
  
-		<script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
+		<script src="assets/js/ekko-lightbox.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function ($) {
 
@@ -538,21 +566,6 @@
 
    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/retina.js"></script>
-
-
-  	<script>
-		$(window).scroll(function() {
-			$('.si').each(function(){
-			var imagePos = $(this).offset().top;
-	
-			var topOfWindow = $(window).scrollTop();
-				if (imagePos < topOfWindow+400) {
-					$(this).addClass("slideUp");
-				}
-			});
-		});
-	</script>    
-
 
 
   
