@@ -28,47 +28,7 @@
     <link href="assets/css/colors/color-74c9be.css" rel="stylesheet">    
     <link href="assets/css/animations.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    
-
-    <!-- MAP SCRIPT - ALL CONFIGURATION IS PLACED HERE - VIEW OUR DOCUMENTATION FOR FURTHER INFORMATION -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?&sensor=false"></script>
-    <script type="text/javascript">
-        // When the window has finished loading create our google map below
-        google.maps.event.addDomListener(window, 'load', init);
-
-    
-        function init() {
-            // Basic options for a simple Google Map
-            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-            var mapOptions = {
-                // How zoomed in you want the map to start at (always required)
-                zoom: 15,
-                
-                scrollwheel: false,
-
-                // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(40.496516, -74.416889), // New York
-
-                // How you would like to style the map. 
-                // This is where you would paste any style found on Snazzy Maps.
-                styles: [	{		featureType:'water',		stylers:[{color:'#74c9be'},{visibility:'on'}]	},{		featureType:'landscape',		stylers:[{color:'#f2f2f2'}]	},{		featureType:'road',		stylers:[{saturation:-100},{lightness:45}]	},{		featureType:'road.highway',		stylers:[{visibility:'simplified'}]	},{		featureType:'road.arterial',		elementType:'labels.icon',		stylers:[{visibility:'off'}]	},{		featureType:'administrative',		elementType:'labels.text.fill',		stylers:[{color:'#444444'}]	},{		featureType:'transit',		stylers:[{visibility:'off'}]	},{		featureType:'poi',		stylers:[{visibility:'off'}]	}]
-            };
-
-            // Get the HTML DOM element that will contain your map 
-            // We are using a div with id="map" seen below in the <body>
-            var mapElement = document.getElementById('map');
-
-            // Create the Google Map using out element and options defined above
-            var map = new google.maps.Map(mapElement, mapOptions);
-
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(40.496516, -74.416889),
-          map: map,
-          title: "Ole's and Nil's Place @ Highland Manor Apts"
-        });
-        }
-    </script>
-    
+        
     
     <!-- Main Jquery & Hover Effects. Should load first -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -165,23 +125,32 @@
    "title": "IKEA KARLSTADT Armchair",
    "description": "... a.k.a \"the thinking chair\" has helped producing numerous brilliant (and a few not so brilliant) ideas, so it should be well worth the money. Also very comfortable and in good shape.",
    "weblink": "http://www.ikea.com/us/en/catalog/products/S19840403/#/S29840389",
-   "askingprice": 80.00,
+   "askingprice": 60.00,
    "obo": "True",
    "image": "assets/img/items/IMG_2271.JPG"
 },
 
 {
    "title": "IKEA IVAR Shelf Combination",
-   "description": "3 x 35\" wide, 12\" deep and 89\" high monstrosity providing ample storage space. Less than 1 year old and in very good condition.",
+   "description": "3 x 35\" wide, 12\" deep and 89\" high monstrosity providing ample storage space. Less than 1 year old and in very good condition. The IKEA Galant desk happens to fit perfectly in the middle (hint hint!).",
    "weblink": "http://www.ikea.com/us/en/catalog/categories/departments/living_room/11704/",
-   "askingprice": 60.00,
+   "askingprice": 50.00,
    "obo": "True",
    "image": "assets/img/items/IMG_2389.JPG"
 },
 
 {
+   "title": "IKEA GALANT Desk System",
+   "description": "31 1/2 x 63 (+ 22 extension - optional). Huge work desk / dining table / whatever you want it to be. Also fits perfectly in the middle of the IKEA IVAR Shelf.",
+   "weblink": "http://www.ikea.com/us/en/catalog/categories/departments/workspaces/18962/",
+   "askingprice": 30.00,
+   "obo": "True",
+   "image": "assets/img/items/galant.jpg"
+},
+
+{
    "title": "Two IKEA TERJE Folding Chairs (red)",
-   "description": "TODO",
+   "description": "Well. Two red folding chairs. In pretty good condition.",
    "weblink": "http://www.ikea.com/us/en/catalog/products/00222440/",
    "askingprice": 12.00,
    "obo": "True",
@@ -190,7 +159,7 @@
 
 {
    "title": "IKEA TERJE Folding Chair",
-   "description": "TODO",
+   "description": "Another folding chair. Also in good condition.",
    "weblink": "http://www.ikea.com/us/en/catalog/products/00222440/",
    "askingprice": 6.00,
    "obo": "True",
@@ -199,36 +168,36 @@
 
 {
    "title": "Urban Outfitters Rug (small)",
-   "description": "TODO",
-   "weblink": "#",
-   "askingprice": 0.00,
+   "description": "\"Magical Thinking Triangle Chain Rug\". Low profile, woven cotton. 3x5 feet.",
+   "weblink": "http://www.urbanoutfitters.com/urban/catalog/category.jsp?id=A-RUGS-PRINT&facet_selected=category",
+   "askingprice": 15.00,
    "obo": "True",
    "image": "assets/img/items/IMG_2267.JPG"
 },
 
 {
    "title": "Urban Outfitters Rug (small)",
-   "description": "TODO",
-   "weblink": "#",
-   "askingprice": 0.00,
+   "description": "\"Magical Thinking Impression Rug\". Low profile, woven cotton. 3x5 feet.",
+   "weblink": "http://www.urbanoutfitters.com/urban/catalog/category.jsp?id=A-RUGS-PRINT&facet_selected=category",
+   "askingprice": 15.00,
    "obo": "True",
    "image": "assets/img/items/IMG_2268.JPG"
 },
 
 {
    "title": "Urban Outfitters Rug (large)",
-   "description": "TODO",
+   "description": "\"Magical Thinking Kala Rug\". Low profile, woven cotton. 5x7 feet.",
    "weblink": "#",
-   "askingprice": 0.00,
+   "askingprice": 25.00,
    "obo": "True",
    "image": "assets/img/items/IMG_2280.JPG"
 },
 
 {
    "title": "Urban Outfitters Rug (large)",
-   "description": "TODO",
+   "description": "\"Magical Thinking Giant Dot Rug\". Low profile, woven cotton. 5x7 feet.",
    "weblink": "#",
-   "askingprice": 0.00,
+   "askingprice": 25.00,
    "obo": "True",
    "image": "assets/img/items/IMG_2286.JPG"
 },
@@ -244,7 +213,7 @@
 
 {
    "title": "ASUS VE208T 20\" LED Monitor",
-   "description": "TODO",
+   "description": "20\" wide-screen. high contrast ratio. Works great - espectially with the Logitech Wireless Combo (hint hint!). " ,
    "weblink": "http://www.amazon.com/Asus-VE208T-20-Inch-LED-Monitor/dp/B0045JFTXU/ref=sr_1_1?ie=UTF8&qid=1399492746&sr=8-1&keywords=ASUS+VE208T+20%5C%22+LED+Monitor",
    "askingprice": 40.00,
    "obo": "True",
@@ -271,9 +240,9 @@
 
 {
    "title": "YAMAHA DSP Receiver HTR-5940",
-   "description": "TODO",
-   "weblink": "#",
-   "askingprice": 25.00,
+   "description": "Powerful and versatile 6.1-channel receiver featuring Quad-Field CINEMA DSP, XM Satellite Radio Ready with XM HD Surround",
+   "weblink": "http://usa.yamaha.com/products/audio-visual/av-receivers-amps/htr/htr-5940_black__u/?mode=model",
+   "askingprice": 35.00,
    "obo": "True",
    "image": "assets/img/items/IMG_1920.JPG"
 },
@@ -291,7 +260,7 @@
    "title": "Bose 2+1 Speaker Set ",
    "description": "Bose sub woofer (not pictured) + two satellite speakers. They have all seen better days, but they sound great and are in perfect working condition.",
    "weblink": "#",
-   "askingprice": 15.00,
+   "askingprice": 10.00,
    "obo": "True",
    "image": "assets/img/items/IMG_1957.JPG"
 },
@@ -307,7 +276,7 @@
 
 {
    "title": "Crane Ultrasonic Humidifier",
-   "description": "TODO",
+   "description": "Good for your sinuses in the wintertime when the air gets all dry and stuff. Also very useful if you want to get serious about growing orchids!",
    "weblink": "http://www.amazon.com/Crane-Ultrasonic-Humidifier-Gallon-output/dp/B005PK7RW4/ref=sr_1_cc_1?s=aps&ie=UTF8&qid=1399492692&sr=1-1-catcorr&keywords=crane+humidifier",
    "askingprice": 0.00,
    "obo": "True",
@@ -327,7 +296,7 @@
    "title": "Large, Heavy-Duty Work Desk",
    "description": "The type of heavy-duty desk you find at government offices. Steel legs and heavy wooden top. Clear potential to out-live humanity. Size: ",
    "weblink": "#",
-   "askingprice": 0.00,
+   "askingprice": 10.00,
    "obo": "True",
    "image": "assets/img/items/IMG_1594.JPG"
 },
@@ -335,7 +304,7 @@
 
 {
    "title": "Three Framed Ernst Haeckel Print(out)s",
-   "description": "Three prints, err... printouts by German naturalist Ernst Haeckel. If you don't like the prints, you might still like the three white IKEA XX frames.",
+   "description": "Three prints, err... printouts by German naturalist Ernst Haeckel. If you don't like the prints, you might still like the three white IKEA 9 x 11 \" frames.",
    "weblink": "https://en.wikipedia.org/wiki/Kunstformen_der_Natur",
    "askingprice": 5.00,
    "obo": "True",
@@ -343,58 +312,58 @@
 },
 
 {
-   "title": "Pretentious Art Poster #1",
-   "description": "TODO",
-   "weblink": "#",
-   "askingprice": 0.00,
+   "title": "Very Pretentious Art Poster",
+   "description": "Jackson Pollock - No Limits, Just Edges. Berlin 2005. Pretty large. A bit \"wavy\", might need some ironing. ",
+   "weblink": "http://www.deutsche-guggenheim.de/e/pressephotos30.php",
+   "askingprice": 6.00,
    "obo": "True",
-   "image": "assets/img/items/"
+   "image": "assets/img/items/IMG_2341.JPG"
 },
 
 {
-   "title": "Pretentious Art Poster #2",
-   "description": "TODO",
-   "weblink": "#",
-   "askingprice": 0.00,
+   "title": "Pretty Pretentious Art Poster",
+   "description": "Galerie Maeght - Calder Fleches. Got this at Fondation Maeght in St. Paul. Also a bit \"wavy\".",
+   "weblink": "http://www.fondation-maeght.com/index.php/en",
+   "askingprice": 3.00,
    "obo": "True",
-   "image": "assets/img/items/"
+   "image": "assets/img/items/IMG_2343.JPG"
 },
 
 {
-   "title": "Pretentious Art Poster #3",
-   "description": "TODO",
-   "weblink": "#",
-   "askingprice": 0.00,
+   "title": "Quite Pretentious Art Poster",
+   "description": "Galerie Maeght - Les Ateliers de la Modernite. Also got this at Fondation Maeght, Yes. Also a bit \"wavy\".",
+   "weblink": "http://www.fondation-maeght.com/index.php/en",
+   "askingprice": 3.00,
    "obo": "True",
-   "image": "assets/img/items/"
+   "image": "assets/img/items/IMG_2344.JPG"
 },
 
 
 {
    "title": "BodySolid Exercise Ball ",
-   "description": "TODO",
+   "description": "Exercise ball. Red (we also have another blue one). Also great as office-chair replacement (that's what I've been using it for) - good for your back! ",
    "weblink": "http://www.amazon.com/Body-Solid-Tools-BSTSB75-Exercise/dp/B0029Z3R9K/ref=sr_1_1?ie=UTF8&qid=1399492937&sr=8-1&keywords=bodysolid+tools",
-   "askingprice": 5.00,
+   "askingprice": 8.00,
    "obo": "True",
    "image": "assets/img/items/BALL_RED.JPG"
 },
 
 {
-   "title": "Another Ball",
-   "description": "TODO",
-   "weblink": "#",
-   "askingprice": 5.00,
+   "title": "Topeak Dual Touch Bike Storage Stand",
+   "description": "Solid, height-adjustable bike storage stand. Few year old, but in good condition. No. It does not come with the bike.",
+   "weblink": "http://www.amazon.com/Topeak-Dual-Touch-Storage-Stand/dp/B000FIE4WC",
+   "askingprice": 40.00,
    "obo": "True",
-   "image": "assets/img/items/"
+   "image": "assets/img/items/IMG_2355.JPG"
 },
 
 {
-   "title": "Another ball",
-   "description": "TODO",
+   "title": "Habinger Yoga Matt",
+   "description": "No idea why on earth I bought this as I dont' do yoga. It's nice and soft though. ",
    "weblink": "#",
-   "askingprice": 5.00,
+   "askingprice": 4.00,
    "obo": "True",
-   "image": "assets/img/items/"
+   "image": "assets/img/items/IMG_2359.JPG"
 },
 
 {
@@ -404,7 +373,54 @@
    "askingprice": 5.00,
    "obo": "True",
    "image": "assets/img/items/IMG_2324.JPG"
-}
+},
+
+{
+   "title": "Floor Lamp",
+   "description": "Another  typical graduate student appartment floor lamp. Provides decent light and collects just as much dust.",
+   "weblink": "#",
+   "askingprice": 5.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2276.JPG"
+},
+
+{
+   "title": "Desk Lamp",
+   "description": "Not much to say about this gem. Plastic. Good for reading at night.",
+   "weblink": "#",
+   "askingprice": 4.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2308.JPG"
+},
+
+{
+   "title": "Clip-On Lamp",
+   "description": "Clips on to things, which can be really useful. Trust me. And it's made from metal.",
+   "weblink": "#",
+   "askingprice": 4.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2307.JPG"
+},
+
+{
+   "title": "Sparkfun Soldering Iron",
+   "description": "Temeperature controlled. 50W. Two years old. Very good for soldering electronic components to cicuit boards an for severely burning your fingers. Works like a charm.",
+   "weblink": "https://www.sparkfun.com/products/10707",
+   "askingprice": 10.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_1938.JPG"
+},
+
+{
+   "title": "FLUKE PM3082 Oscilloscope. Whaaaaat?!?!",
+   "description": "Temeperature controlled. 50W. Two years old. Very good for soldering electronic components to cicuit boards an for severely burning your fingers. Works like a charm.",
+   "weblink": "https://www.sparkfun.com/products/10707",
+   "askingprice": 10.00,
+   "obo": "True",
+   "image": "assets/img/items/IMG_2113.JPG"
+},
+
+
 ]
 ;
             
@@ -567,6 +583,44 @@
    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/retina.js"></script>
 
+    <!-- MAP SCRIPT - ALL CONFIGURATION IS PLACED HERE - VIEW OUR DOCUMENTATION FOR FURTHER INFORMATION -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?&sensor=false"></script>
+    <script type="text/javascript">
+        // When the window has finished loading create our google map below
+        google.maps.event.addDomListener(window, 'load', init);
+
+    
+        function init() {
+            // Basic options for a simple Google Map
+            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+            var mapOptions = {
+                // How zoomed in you want the map to start at (always required)
+                zoom: 15,
+                
+                scrollwheel: false,
+
+                // The latitude and longitude to center the map (always required)
+                center: new google.maps.LatLng(40.496516, -74.416889), // New York
+
+                // How you would like to style the map. 
+                // This is where you would paste any style found on Snazzy Maps.
+                styles: [ {   featureType:'water',    stylers:[{color:'#74c9be'},{visibility:'on'}] },{   featureType:'landscape',    stylers:[{color:'#f2f2f2'}] },{   featureType:'road',   stylers:[{saturation:-100},{lightness:45}]  },{   featureType:'road.highway',   stylers:[{visibility:'simplified'}] },{   featureType:'road.arterial',    elementType:'labels.icon',    stylers:[{visibility:'off'}]  },{   featureType:'administrative',   elementType:'labels.text.fill',   stylers:[{color:'#444444'}] },{   featureType:'transit',    stylers:[{visibility:'off'}]  },{   featureType:'poi',    stylers:[{visibility:'off'}]  }]
+            };
+
+            // Get the HTML DOM element that will contain your map 
+            // We are using a div with id="map" seen below in the <body>
+            var mapElement = document.getElementById('map');
+
+            // Create the Google Map using out element and options defined above
+            var map = new google.maps.Map(mapElement, mapOptions);
+
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(40.496516, -74.416889),
+          map: map,
+          title: "Ole's and Nil's Place @ Highland Manor Apts"
+        });
+        }
+    </script>
 
   
   </body>
