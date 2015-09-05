@@ -13,7 +13,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
-    color: #333;
+    color: #3F4847;
 }
 
 
@@ -30,7 +30,7 @@ p {
 
 /* Links */
 a {
-    color: #f39c12;
+    color: #0088A7;
     word-wrap: break-word;
 
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -42,7 +42,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #7b7b7b;
+    color: #3F4847;
     text-decoration: none;
     outline: 0;
 }
@@ -82,6 +82,6 @@ h2 {
 	margin-top: 40px;
 }
 .w i {
-	font-size: 26px;
-	padding: 12px;
+	font-size: 36px;
+	padding: 16px;
 }
