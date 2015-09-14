@@ -36,18 +36,73 @@
         <h2 class="headline">September 12, 2015</h2>
     </header>
     <section id="post-body">
-        <p>You&#39;ll find this post in your <code>_posts</code> directory - edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!
-To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
+        <h3>Installation</h3>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p>The easiest way to install the latest version of <a href="http://spark.apache.org">Apache Spark</a>
+on OS X and to keep it up to date is via <a href="http://brew.sh/">Homebrew</a>.</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">brew install apache-spark</code></pre></div>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/mojombo/jekyll">Jekyll&#39;s GitHub repo</a>.</p>
+<p>The above command installs the latest version of Apache Spark
+on your Mac. By the time I wrote this post, this was version 1.5.
+If you don&#39;t have Java installed on your system, the installation
+will abort and print instructions how to install
+the latest Oracle JVM release.</p>
+
+<p>After the installation has completed, you&#39;ll find your Spark
+installation in <code>/usr/local/Cellar/apache-spark/1.5.0</code>. All relevant
+paths were added automatically to your environment by Homebrew.</p>
+
+<p>Next, you can change Spark&#39;s log-level to something a little less
+verbose. First, copy the log4j template file;</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/local/Cellar/apache-spark/1.5.0/libexec/conf
+cp log4j.properties.template log4j.properties</code></pre></div>
+
+<p>Open the copied <code>log4j.properties</code> file, find the line starting with
+<code>log4j.rootCategory</code> and change the log-level from <code>INFO</code> to <code>ERROR</code>:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">log4j</span><span class="o">.</span><span class="na">rootCategory</span><span class="o">=</span><span class="n">ERROR</span><span class="o">,</span> <span class="n">console</span></code></pre></div>
+
+<p>That&#39;s pretty much it. Now you can fire up Spark&#39;s interactive <a href="http://www.scala-lang.org/">Scala</a> or
+Python shells.</p>
+
+<h3>Scala Shell</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">spark-shell
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  &#39;_/
+   /___/ .__/\_,_/_/ /_/\_\   version 1.5.0
+      /_/
+
+Using Scala version 2.10.4 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_60)
+Type in expressions to have them evaluated.
+Type :help for more information.
+Spark context available as sc.
+SQL context available as sqlContext.
+
+scala&gt;
+</code></pre></div>
+<h3>Python Shell</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">pyspark
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">Python 2.7.10 (default, Jul 14 2015, 19:46:27)
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  &#39;_/
+   /__ / .__/\_,_/_/ /_/\_\   version 1.5.0
+      /_/
+
+Using Python version 2.7.10 (default, Jul 14 2015 19:46:27)
+SparkContext available as sc, HiveContext available as sqlContext.
+</code></pre></div>
+<h3>Next Steps</h3>
+
+<p>If you are new to Spark, I&#39;d suggest that you work your way
+through the <a href="http://spark.apache.org/docs/latest/quick-start.html">Spark Quick Start Guide</a>.</p>
 
     </section>
 </article>

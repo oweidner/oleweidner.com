@@ -10,8 +10,7 @@
         <title>Getting Started with Spark on OS X</title>
         
         
-          <description>&lt;p&gt;You&amp;#39;ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
-To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+          <description>&lt;h3&gt;Installation&lt;/h3&gt;
 </description>
         
         <pubDate>Sat, 12 Sep 2015 12:18:00 +0200</pubDate>
