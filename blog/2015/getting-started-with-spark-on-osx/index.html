@@ -33,10 +33,13 @@
     <article class="post">
     <header>
         <h1>Getting Started with Spark on OS X</h1>
+        <h2>Installation and first steps</h2>
+
         <h2 class="headline">September 12, 2015</h2>
     </header>
     <section id="post-body">
-        <p><img src="https://images.unsplash.com/photo-1429051883746-afd9d56fbdaf?q=80&amp;fm=jpg&amp;s=b5bc5b301b282fd18c85d9bb6ef941e6" alt="Apache Spark"></p>
+        <p><img src="/blog//assets/images/splash/photo-1429051883746-afd9d56fbdaf.jpg" alt="Apache Spark" />
+<em class="image-caption">Photo by <a href="https://unsplash.com/negativespace">Luis Llerena</a></em></p>
 
 <p>With impressive performance results and intuitive support for streaming data,
 <a href="http://spark.apache.org">Apache Spark</a> is one of the <em>hottest</em> discussion topics across the big data community
@@ -44,15 +47,15 @@ and start-up lofts around the globe.
 Whether Spark will end up replacing <a href="https://hadoop.apache.org/">Hadoop</a> or whether the two will continue to coexist
 is up for debate.
 But this much is for certain: it is definitely worth having a good look at. Especially
-from a developer&#39;s point of view, Spark is quite a tease as it comes with an invaluable practical
+from a developer’s point of view, Spark is quite a tease as it comes with an invaluable practical
 feature: interactive Python and Scala shells!</p>
 
 <p>While Spark obviously thrives in large-scale cluster deployments,
 possibly on top of <a href="http://mesos.apache.org/">Apache Mesos</a>, a local installation is a cheap and easy
-way to explore all key features of the Spark framework. Here&#39;s how to get started
+way to explore all key features of the Spark framework. Here’s how to get started
 with Spark on OS X - it just takes a few minutes.</p>
 
-<h3>Installation</h3>
+<h3 id="installation">Installation</h3>
 
 <p>The best way to install the latest version of Apache Spark
 on OS X and to keep it up to date is via <a href="http://brew.sh/">Homebrew</a>.</p>
@@ -61,15 +64,15 @@ on OS X and to keep it up to date is via <a href="http://brew.sh/">Homebrew</a>.
 
 <p>The above command installs the latest version of Apache Spark
 on your Mac. By the time I wrote this post, this was version 1.5.
-If you don&#39;t have Java installed on your system, the installation
+If you don’t have Java installed on your system, the installation
 will abort and print instructions how to install
 the latest Oracle JDK.</p>
 
-<p>After the installation has completed, you&#39;ll find your Spark
+<p>After the installation has completed, you’ll find your Spark
 installation in <code>/usr/local/Cellar/apache-spark/1.5.0</code>. All relevant
 paths were added automatically to your environment by Homebrew.</p>
 
-<p>Next, you can change Spark&#39;s log-level to something a little less
+<p>Next, you can change Spark’s log-level to something a little less
 verbose. First, copy the log4j template file;</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/local/Cellar/apache-spark/1.5.0/libexec/conf
@@ -80,45 +83,55 @@ cp log4j.properties.template log4j.properties</code></pre></div>
 
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">log4j</span><span class="o">.</span><span class="na">rootCategory</span><span class="o">=</span><span class="n">ERROR</span><span class="o">,</span> <span class="n">console</span></code></pre></div>
 
-<p>That&#39;s pretty much it. Now you can fire up Spark&#39;s interactive <a href="http://www.scala-lang.org/">Scala</a> or
+<p>That’s pretty much it. Now you can fire up Spark’s interactive <a href="http://www.scala-lang.org/">Scala</a> or
 Python shells.</p>
 
-<h3>Scala Shell</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">spark-shell
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">Welcome to
-      ____              __
-     / __/__  ___ _____/ /__
-    _\ \/ _ \/ _ `/ __/  &#39;_/
-   /___/ .__/\_,_/_/ /_/\_\   version 1.5.0
-      /_/
+<h3 id="scala-shell">Scala Shell</h3>
 
-Using Scala version 2.10.4 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_60)
+<p><code>
+spark-shell
+</code>
+```
+Welcome to
+      <strong>__              __
+     / __/</strong>  <strong>_ __</strong><em>/ /__
+    _\ \/ _ \/ _ `/ <strong>/  ‘_/
+   /</strong></em>/ .<em>_/_,</em>/<em>/ /</em>/_\   version 1.5.0
+      /_/</p>
+
+<p>Using Scala version 2.10.4 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_60)
 Type in expressions to have them evaluated.
 Type :help for more information.
 Spark context available as sc.
-SQL context available as sqlContext.
+SQL context available as sqlContext.</p>
 
-scala&gt;
-</code></pre></div>
-<h3>Python Shell</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">pyspark
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">Python 2.7.10 (default, Jul 14 2015, 19:46:27)
+<p>scala&gt;
+```</p>
+
+<h3 id="python-shell">Python Shell</h3>
+<p><code>
+pyspark
+</code>
+```
+Python 2.7.10 (default, Jul 14 2015, 19:46:27)
 [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+Type “help”, “copyright”, “credits” or “license” for more information.
 Welcome to
-      ____              __
-     / __/__  ___ _____/ /__
-    _\ \/ _ \/ _ `/ __/  &#39;_/
-   /__ / .__/\_,_/_/ /_/\_\   version 1.5.0
-      /_/
+      <strong>__              __
+     / __/</strong>  <strong>_ __</strong><em>/ /__
+    _\ \/ _ \/ _ `/ <strong>/  ‘_/
+   /</strong> / .__/_,</em>/<em>/ /</em>/_\   version 1.5.0
+      /_/</p>
 
-Using Python version 2.7.10 (default, Jul 14 2015 19:46:27)
+<p>Using Python version 2.7.10 (default, Jul 14 2015 19:46:27)
 SparkContext available as sc, HiveContext available as sqlContext.
-</code></pre></div>
-<h3>Next Steps</h3>
+```</p>
 
-<p>If you are new to Spark, I&#39;d suggest that you work your way
+<h3 id="next-steps">Next Steps</h3>
+
+<p>If you are new to Spark, I’d suggest that you work your way
 through the <a href="http://spark.apache.org/docs/latest/quick-start.html">Spark Quick Start Guide</a>.</p>
+
 
     </section>
 </article>
@@ -172,13 +185,14 @@ through the <a href="http://spark.apache.org/docs/latest/quick-start.html">Spark
         <h3>Read more</h3>
         
             <li>
+                <a href="/blog/2015/spark-streaming/">Twitter Stream Processing with Spark<aside class="dates">Sep 15</aside></a>
+            </li>
+        
+            <li>
                 <a href="/blog/2015/getting-started-with-spark-on-osx/">Getting Started with Spark on OS X<aside class="dates">Sep 12</aside></a>
             </li>
         
     </ul>
-
-
-
 
 
   </section>

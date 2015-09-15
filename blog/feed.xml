@@ -3,19 +3,35 @@
   <channel>
     <title>Eventually Consistent</title>
     <description>Ole Weidner&#39;s Weblog</description>
-    <link>http://your-blog-url.example.com</link>
-    <atom:link href="http://your-blog-url.example.com/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://oleweidner.com/blog/</link>
+    <atom:link href="http://oleweidner.com/blog//feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Twitter Stream Processing with Spark</title>
+        
+        
+          <description>&lt;p&gt;&lt;img src=&quot;/blog//assets/images/splash/photo-1430116267665-e7f6b3dafce3.jpg&quot; alt=&quot;Apache Spark&quot; /&gt;
+&lt;em class=&quot;image-caption&quot;&gt;Photo by &lt;a href=&quot;https://unsplash.com/wilstewart3&quot;&gt;Wil Stewart&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 15 Sep 2015 16:14:47 +0200</pubDate>
+        <link>http://oleweidner.com/blog//2015/spark-streaming/</link>
+        <guid isPermaLink="true">http://oleweidner.com/blog//2015/spark-streaming/</guid>
+      </item>
     
       <item>
         <title>Getting Started with Spark on OS X</title>
         
         
-          <description>&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1429051883746-afd9d56fbdaf?q=80&amp;amp;fm=jpg&amp;amp;s=b5bc5b301b282fd18c85d9bb6ef941e6&quot; alt=&quot;Apache Spark&quot;&gt;&lt;/p&gt;
+          <description>&lt;p&gt;&lt;img src=&quot;/blog//assets/images/splash/photo-1429051883746-afd9d56fbdaf.jpg&quot; alt=&quot;Apache Spark&quot; /&gt;
+&lt;em class=&quot;image-caption&quot;&gt;Photo by &lt;a href=&quot;https://unsplash.com/negativespace&quot;&gt;Luis Llerena&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
 </description>
         
         <pubDate>Sat, 12 Sep 2015 12:18:00 +0200</pubDate>
-        <link>http://your-blog-url.example.com/2015/getting-started-with-spark-on-osx/</link>
-        <guid isPermaLink="true">http://your-blog-url.example.com/2015/getting-started-with-spark-on-osx/</guid>
+        <link>http://oleweidner.com/blog//2015/getting-started-with-spark-on-osx/</link>
+        <guid isPermaLink="true">http://oleweidner.com/blog//2015/getting-started-with-spark-on-osx/</guid>
       </item>
     
   </channel>

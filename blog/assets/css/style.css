@@ -69,6 +69,16 @@ h2 {
 	color: #bbb;
 }
 
+.image-box {
+	box-shadow: 0 0 16px;
+}
+
+.image-caption {
+	font-size: 12px;
+	display: block ;
+	text-align: right;
+}
+
 .profile #wrapper {
 	padding: 100px 40px 0px;
 	max-width: 600px;
