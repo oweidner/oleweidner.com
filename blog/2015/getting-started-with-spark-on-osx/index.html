@@ -60,7 +60,8 @@ with Spark on OS X - it just takes a few minutes.</p>
 <p>The best way to install the latest version of Apache Spark
 on OS X and to keep it up to date is via <a href="http://brew.sh/">Homebrew</a>.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">brew install apache-spark</code></pre></div>
+<pre><code class="language-bash">brew install apache-spark
+</code></pre>
 
 <p>The above command installs the latest version of Apache Spark
 on your Mac. By the time I wrote this post, this was version 1.5.
@@ -75,57 +76,57 @@ paths were added automatically to your environment by Homebrew.</p>
 <p>Next, you can change Spark’s log-level to something a little less
 verbose. First, copy the log4j template file;</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/local/Cellar/apache-spark/1.5.0/libexec/conf
-cp log4j.properties.template log4j.properties</code></pre></div>
+<pre><code class="language-bash">cd /usr/local/Cellar/apache-spark/1.5.0/libexec/conf
+cp log4j.properties.template log4j.properties
+</code></pre>
 
 <p>Open the copied <code>log4j.properties</code> file, find the line starting with
 <code>log4j.rootCategory</code> and change the log-level from <code>INFO</code> to <code>ERROR</code>:</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">log4j</span><span class="o">.</span><span class="na">rootCategory</span><span class="o">=</span><span class="n">ERROR</span><span class="o">,</span> <span class="n">console</span></code></pre></div>
+<pre><code class="language-none">log4j.rootCategory=ERROR, console
+</code></pre>
 
 <p>That’s pretty much it. Now you can fire up Spark’s interactive <a href="http://www.scala-lang.org/">Scala</a> or
 Python shells.</p>
 
 <h3 id="scala-shell">Scala Shell</h3>
 
-<p><code>
-spark-shell
-</code>
-```
-Welcome to
-      <strong>__              __
-     / __/</strong>  <strong>_ __</strong><em>/ /__
-    _\ \/ _ \/ _ `/ <strong>/  ‘_/
-   /</strong></em>/ .<em>_/_,</em>/<em>/ /</em>/_\   version 1.5.0
-      /_/</p>
+<pre><code class="language-bash">spark-shell
+</code></pre>
 
-<p>Using Scala version 2.10.4 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_60)
+<pre><code class="language-none">Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 1.5.0
+      /_/
+
+Using Scala version 2.10.4 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_60)
 Type in expressions to have them evaluated.
 Type :help for more information.
 Spark context available as sc.
-SQL context available as sqlContext.</p>
+SQL context available as sqlContext.
 
-<p>scala&gt;
-```</p>
+scala&gt;
+</code></pre>
 
 <h3 id="python-shell">Python Shell</h3>
-<p><code>
-pyspark
-</code>
-```
-Python 2.7.10 (default, Jul 14 2015, 19:46:27)
-[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
-Type “help”, “copyright”, “credits” or “license” for more information.
-Welcome to
-      <strong>__              __
-     / __/</strong>  <strong>_ __</strong><em>/ /__
-    _\ \/ _ \/ _ `/ <strong>/  ‘_/
-   /</strong> / .__/_,</em>/<em>/ /</em>/_\   version 1.5.0
-      /_/</p>
+<pre><code class="language-bash">pyspark
+</code></pre>
 
-<p>Using Python version 2.7.10 (default, Jul 14 2015 19:46:27)
+<pre><code class="language-none">Python 2.7.10 (default, Jul 14 2015, 19:46:27)
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 1.5.0
+      /_/
+
+Using Python version 2.7.10 (default, Jul 14 2015 19:46:27)
 SparkContext available as sc, HiveContext available as sqlContext.
-```</p>
+</code></pre>
 
 <h3 id="next-steps">Next Steps</h3>
 
@@ -183,10 +184,6 @@ through the <a href="http://spark.apache.org/docs/latest/quick-start.html">Spark
 
     <ul id="post-list" class="archive readmore">
         <h3>Read more</h3>
-        
-            <li>
-                <a href="/blog/2015/spark-streaming/">Twitter Stream Processing with Spark<aside class="dates">Sep 15</aside></a>
-            </li>
         
             <li>
                 <a href="/blog/2015/getting-started-with-spark-on-osx/">Getting Started with Spark on OS X<aside class="dates">Sep 12</aside></a>

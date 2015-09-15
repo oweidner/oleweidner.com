@@ -7,20 +7,6 @@
     <atom:link href="http://oleweidner.com/blog//feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Twitter Stream Processing with Spark</title>
-        
-        
-          <description>&lt;p&gt;&lt;img src=&quot;/blog//assets/images/splash/photo-1430116267665-e7f6b3dafce3.jpg&quot; alt=&quot;Apache Spark&quot; /&gt;
-&lt;em class=&quot;image-caption&quot;&gt;Photo by &lt;a href=&quot;https://unsplash.com/wilstewart3&quot;&gt;Wil Stewart&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-</description>
-        
-        <pubDate>Tue, 15 Sep 2015 16:14:47 +0200</pubDate>
-        <link>http://oleweidner.com/blog//2015/spark-streaming/</link>
-        <guid isPermaLink="true">http://oleweidner.com/blog//2015/spark-streaming/</guid>
-      </item>
-    
-      <item>
         <title>Getting Started with Spark on OS X</title>
         
         
