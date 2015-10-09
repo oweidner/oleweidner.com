@@ -7,6 +7,20 @@
     <atom:link href="http://oleweidner.com/blog//feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Getting Started with Apache Kafka on OS X</title>
+        
+        
+          <description>&lt;p&gt;&lt;img src=&quot;/blog//assets/images/splash/photo-1415757463766-a0ff23175cd4.jpg&quot; alt=&quot;Cassandra&quot; /&gt;
+&lt;em class=&quot;image-caption&quot;&gt;“Das &lt;a href=&quot;https://en.wikipedia.org/wiki/The_Castle_(novel)&quot;&gt;Schloss&lt;/a&gt;”, photo by &lt;a href=&quot;https://unsplash.com/polarblair&quot;&gt;Blair Connolly&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 10 Oct 2015 14:00:00 +0200</pubDate>
+        <link>http://oleweidner.com/blog//2015/getting-started-with-kafka-on-osx/</link>
+        <guid isPermaLink="true">http://oleweidner.com/blog//2015/getting-started-with-kafka-on-osx/</guid>
+      </item>
+    
+      <item>
         <title>Migrating Docker Apps to Scaleway</title>
         
         
