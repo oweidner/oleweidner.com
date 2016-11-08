@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Context-Awareness in HPC | Ole Weidner | University of Edinburgh</title>
+
+  <meta name="description" content="Towards Data-Centric HPC Platforms">
+  <meta name="author" content="Ole Weidner">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <div class="slides">
+
+      <!-- SLIDE 01 -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h1><font style="background-color: #ca1e3b">&nbsp; C* &nbsp;</font></h1>
+        <h3>Towards A Generic Framework for Execution Context on HPC Platforms</h3>
+        <p></p>
+        <p>
+          <!-- <small> -->
+          Ole C. Weidner &middot; University of Edinburgh
+          <!-- </small> -->
+          <br>
+          <!-- <small> -->
+          <a href="mailto:ole.weidner@ed.ac.uk">ole.weidner@ed.ac.uk</a><br />
+          <!-- <a href="https://github.com/datadrivenhpc">https://github.com/datadrivenhpc</a> -->
+          <!-- </small> -->
+        </p>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <!-- <section>
+      <h2>About</h2>
+      <ul>
+      <li>Big-data engineer at LEGO System A/S in Denmark</li>
+      <li>Part-time PhD student at the University of Edinburgh </li>
+      <li>Previously: research associate at Louisiana State University and Rutgers University, USA</li>
+      <li>Have been involved for more then 10 years in many <i>second generation</i> HPC application projects</li>
+      <ul>
+      <li>SAGA: The Simple API for Grid Applications</li>
+      <li>RADICAL-Pilot WMS / P* model</li>
+      <li>EnsembleMD molecular dynamics toolkit</li>
+      <li>ATLAS PanDA workload management system</li>
+    </ul>
+  </ul>
+  <br><br>
+</section> -->
+<!------------------------------------------------------------------------------------------->
+
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+  <h2>Outline</h2>
+  <ol>
+    <li>Background</li>
+    <li>What is execution context ?</li>
+    <li>Who is interested in execution context ?</li>
+    <li>Why do we need a common framework ?</li><br>
+
+    <li>C*: A graph-based context model</li>
+    <li><i>SEASTAR</i>: An implementation of C*</li>
+    <li>Evaluation Strategy </li><br>
+
+    <li>Open / Interesting Research Questions</li>
+
+  </ol>
+</section>
+<!------------------------------------------------------------------------------------------->
+
+<section>
+
+  <!------------------------------------------------------------------------------------------->
+  <section>
+    <h2>Background</h2>
+  </section>
+
+  <!------------------------------------------------------------------------------------------->
+  <section>
+    <h3>Abou Me </h3>
+    <ul>
+      <li>10+ years application developer in academic high-performace computing </li>
+      <ul>
+        <li>Max-Planck-Institute for Gravitational Physics</li>
+        <li>CERN</li>
+        <li>Louisiana State University</li>
+        <li>Rutgers University</li>
+      </ul>
+      <li>Focus mainly on distributed Worload Management Systems (WMS)</li>
+      <br>
+      <li>Now heading up Big Data platform infrastructure team at LEGO</li>
+      <br>
+      <li>Part time PhD student at University of Edinburgh</li>
+    </ul>
+  </section>
+
+  <!------------------------------------------------------------------------------------------->
+  <section>
+    <h3>Last Time in Edinburgh... </h3>
+    <p>... I talked about "Data-Driven HPC"
+    <img class="test" data-src="./images/ddhpc-architecture.png"\>
+
+  </section>
+
+</section>
+
+<section>
+
+  <!------------------------------------------------------------------------------------------->
+  <section>
+    <h2>Execution Context</h2>
+  </section>
+
+  <!------------------------------------------------------------------------------------------->
+  <section>
+    <h3>Platform Structure, Components and Properties </h3>
+    <ul>
+      <li>Nodes and their network interconnects</li>
+      <li>Processor and memory architecture and layout</li>
+      <li>GPUs and FPGAs</li>
+      <li>I/O subsystem, storage hierarchies</li>
+      <li>Performance characteristics of the components, e.g., CPU speed, bandwidths, throughput</li>
+    </ul>
+
+    <br><br>
+    <p style="background-color: #ca1e3b">Mostly static, BUT: HPC system architecture is becomming increasingly
+      heterogeneous and dyanically (re-)configurable. Even platform <u>structure</u>
+      is now dynamic.</p>
+    </section>
+
+    <!------------------------------------------------------------------------------------------->
+    <section>
+      <h3>Platform State</h3>
+      <ul>
+        <li>Utilization of nodes, cpus, cores, memory</li>
+        <li>I/O pressure on the filesystems</li>
+        <li>Utilisation of internal and external network links</li>
+        <li>Component errors</li>
+      </ul>
+      <br><br>
+      <p style="background-color: #ca1e3b">Continuous stream of metrics</p>
+    </section>
+
+    <!------------------------------------------------------------------------------------------->
+    <section>
+      <h3>Application Components, Structure and Locality</h3>
+      <ul>
+        <li>Executable representation of the appliction:</li>
+        <ul>
+          <li>Components: processes, threads, ... </li>
+          <li>Structure: communication between components</li>
+          <li>Locality: placement on nodes, CPUs, cores</li>
+        </ul>
+      </ul>
+      <br><br>
+      <p style="background-color: #ca1e3b">Can be static throughout the lifetime
+        of an application, but in many cases also dynamic: adaptive applications</p>
+      </section>
+
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h3>Application State</h3>
+        <ul>
+          <li>Process CPU and memory utilization </li>
+          <li>Data sent and received py processes, threads </li>
+        </ul>
+        <br><br>
+        <p style="background-color: #ca1e3b">Again, a continuous stream of metrics</p>
+      </section>
+
+      <!------------------------------------------------------------------------------------------->
+    </section>
+
+
+    <section>
+
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Who needs information about Execution Context?</h2>
+      </section>
+
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h3>HPC Platform Providers </h3>
+        <ul>
+          <li>Monitor the health and status of the platform</li>
+          <li>Understand how a platform is utilized by different applications</li>
+          <li>Improve the platform's QoS</li>
+        </ul>
+      </section>
+
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h3>HPC System Services </h3>
+        <ul>
+          <li>Schedulers and queueing systems to make job placement decissions</li>
+          <li>Detection and mitigation of "hot spots" and errors</li>
+          <li>Accounting</li>
+          <li>...</li>
+        </ul>
+      </section>
+
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h3>Application Profiling and Benchmarking </h3>
+        <ul>
+          <li>Analyse  application efficiency </li>
+          <li>Tools like Vampir/NG, MPI benchmarking, etc ...</li>
+        </ul>
+
+        <img class="test" data-src="./images/vampir.png"\>
+
+      </section>
+
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h3>Context-Aware Applications</h3>
+
+        <ul>
+          <li>Applications that can both sense, and react based on their environment</li>
+          <li>Automated feedback-loop between application and platform</li>
+          <li>Context-awareness is the foundation for adaptive and dynamic applications</li>
+        </ul>
+
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h3>Example: Charm++ / NAMD</h3>
+
+        <ul>
+          <li>NAMD molecular dynamics simulation software</li>
+          <li>Charm++ parallel programming model used to implement NAMD</li>
+          <li>Implements <u>measurement-based</u> load balancing, fault tolerance, automatic checkpointing, and the ability to shrink and expand the set of processors
+          </ul>
+
+          <img class="test" data-src="./images/mpimigrate.png"\>
+
+
+        </section>
+
+
+        <!------------------------------------------------------------------------------------------->
+        <section>
+          <h3>Example: Pilot-Job Systems</h3>
+
+          <ul>
+            <li>CERN's ATLAS PanDA WMF</li>
+            <li>RADICAL Pilot (Rutgers)</li>
+            <li>Network-aware, load-aware task placing</li>
+            <li>Inter- and Intraplatform</li>
+          </ul>
+
+          <img class="test" data-src="./images/pilotjob.png"\>
+
+
+        </section>
+        <!------------------------------------------------------------------------------------------->
+
+      </section>
+
+      <section>
+        <!------------------------------------------------------------------------------------------->
+        <section>
+          <h2>Why do we need a common framework?</h2>
+
+        </section>
+        <!------------------------------------------------------------------------------------------->
+
+        <!------------------------------------------------------------------------------------------->
+        <section>
+          <h3>Reduce Point Solutions and Redundancy</h3>
+          <ul>
+            <li>Most context-aware solutions implement their own context sensing mechanisms,
+              some efficient, some not so efficient (overhead)</li>
+              <li>Re-Invention of the wheel</li>
+              <li>Application-specific, difficult to re-use</li>
+              <li>Don't work accross systems</li>
+            </ul>
+          </section>
+
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Allow Different Tools To Work Together</h3>
+            <ul>
+              <li>Different tools collect data at different levels</li>
+              <li>Share data among tools and applications in a common model</li>
+              <ul>
+                <li>Monitoring tools like Prometheus, Ganglia, etc.</li>
+                <li>Runtime profiling tools like Vampir, ...</li>
+                <li>Specialised hardware / vendor-sepcific monitoring tool</li>
+                <li>Queueing system data</li>
+              </ul>
+              <li>Tie in and correlate data</li>
+            </ul>
+          </section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Collect Data Where it Make The Most Sense</h3>
+
+            <ul>
+              <li>Some data can easily be connected on the platform end</li>
+              <li>Some data can only be collected on the application end</li>
+            </ul>
+
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+
+        </section>
+
+        <section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>Properties of a Common Framework</h2>
+            <ul>
+              <li>Generic and unbiassed</li>
+              <li>Supports arbitrary level of detail</li>
+              <li>Persistent and shared between all "stakeholders"</li>
+              <li>Queryable and Explorable</li>
+            </ul>
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+        </section>
+        <section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2 style="background-color: #ca1e3b"><i>C* Model</i></h2>
+            <br></br>
+            <p> A model to capture dynamic context information.</p>
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Graph-Based Representation</h3>
+            <ul>
+              <li>Applications and platfroms represented as a variant of a typed, attributed graph [Ehrig et al.]</li>
+              <li>Context is the mapping of the application graphs onto the platform graph</li>
+              <li>Graph structure is time variant, i.e., all graphs are a function of time, e.g., AG(t), PG(t)</li>
+              <li>Arbitrary levels of nested graphs on edges and nodes</li>
+              <li>Mapping of application and platform graphs into context graph</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Typed, Attributed Graph</h3>
+            <img class="test" data-src="./images/graph-01.png"\>
+          </section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>C* Node Types</h3>
+            <ul>
+              <li>Graph node V<sub>g</sub>: application / platform components </li>
+              <li>Observable attribute node V<sub>om</sub>: observable / measurable metric on V<sub>g</sub> or E<sub>g</sub>, e.g.. CPU load</li>
+              <li>Derived attribute node V<sub>dm</sub>: not directly observable but computable from one or more V<sub>om</sub></li>
+              <li>Subgraph nodes V<sub>s</sub>: points to a decomposition subgraph, e.g., a process' V<sub>s</sub> might point to a thread graph</li>
+            </ul>
+          </section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>C* Edge Types</h3>
+            <ul>
+              <li>Graph edge E<sub>g</sub>:</li> connection between application / platform components</li>
+              <li>Edge attribute E<sub>ea</sub>: adds V<sub>om</sub>, V<sub>dm</sub>, V<sub>s</sub> to graph edges</li>
+              <li>Node attribute E<sub>ea</sub>: adds V<sub>om</sub>, V<sub>dm</sub>, V<sub>s</sub> to graph nodes</li></li>
+            </ul>
+          </section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Homogeneous Attributes</h3>
+
+            <ul>
+              <li>Same number and types of attributes across all nodes and edges on the same layer</li>
+              <li>Attributes hold time series instead of changing the graph structure</li>
+            </ul>
+
+          </section>
+
+          <section>
+            <h3>Context Graph Example </h3>
+            <img class="test" data-src="./images/graph-02.png"\>
+          </section>
+
+
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2 style="background-color: #ca1e3b">SEASTAR</h2>
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>C* Instance</h3>
+            <ul>
+              <li>Platform Graph Layers</li>
+              <ul>
+                <li>1: Processes</li>
+                <li>2: Threads</li>
+              </ul>
+
+              <li>Application Graph Layers</li>
+              <ul>
+                <li>0: Node</li>
+                <li>1: CPU</li>
+                <li>2: Core</li>
+              </ul>
+            </ul>
+          </section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Architecture</h3>
+
+            <img class="test" data-src="./images/architecture.png"\>
+
+
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Graph Database</h3>
+            <ul>
+              <li>Persisten Model Storage</li>
+              <li>Currently Built on top of OrientDB</li>
+              <ul>
+                <li>Distributed, Multi-Model</li>
+              </ul>
+              <img class="test" data-src="./images/orientdb.png"\>
+            </ul>
+          </section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Influx and Query APIs</h3>
+
+            <ul>
+              <li>Influx: REST API for pushing data to the model</li>
+              <li>Query: Currently OrientDB's own query interface</li>
+            </ul>
+
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>System Sensors / Application Sensors</h3>
+
+            <ul>
+              <li> Test jobs that uses user-space sensors (Prometheus / node_exporter) to capture application and platform graphs </li>
+              <ul>
+                <li>Limited view of the system</li>
+                <li>Only platform partition used by application is captured</li>
+                <li>Data is only captured when application is running</li>
+              </ul>
+            <li> <u>Upcomming</u>: Generate historic context graph from 6 months of EPCC operational data </li>
+            </ul>
+
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+        </section>
+        <section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>Evaluation Strategy</h2>
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Integrate <i>SEASTAR</i> with Applications </h3>
+
+            <ul>
+              <li>Integrate into Pilot-Job application and evaluate new and existing use-cases</li>
+              <ul>
+                <li>Load-based (re-)scheduling</li>
+                <li>Network-based (re-)scheduling</li>
+              </ul>
+
+              <li>Integrate SPARK HPC application</li>
+              <ul>
+                <li>I/O throughput based scheduling</li>
+              </ul>
+
+              <li>Integrate with adaptive MPI compression</li>
+              <ul>
+                <li>Bandwidth-based dynamic compression </li>
+              </ul>
+
+            </ul>
+
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Integrate <i>SEASTAR</i> with Platforms </h3>
+
+            <ul>
+              <li>Work with EPCC and vendors</li>
+            </ul>
+
+        </section>
+
+        <section>
+
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h3>Interesting Future Questions</h3>
+
+
+            <ul>
+              <li>Extend to Distributed Systems</li>
+              <ul>
+                <li>Can context models be collaboratively maintained?</li>
+                <li>Can the graph be distributed?</li>
+              </ul>
+              <li>C* / SEASTAR at Extreme Scales</li>
+              <ul>
+                <li>Evaluation becomes complex and compute-intensive</li>
+              </ul>
+              <li>API Abstraction</li>
+              <ul>
+                <li class="">Different users / communities want different access to the model </li>
+                <li> Is there a sweet spot / a strategy to support all of them?</li>
+              </ul>
+
+            </ul>
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+        </section>
+
+
+        <section style="text-align: left;">
+          <h1>THANK YOU</h1>
+          <!-- <p>
+          Slides available online: <br>
+          <a href="https://datadrivenhpc.github.io/ddhpc-talk/">
+          https://datadrivenhpc.github.io/ddhpc-talk/</a>
+        </p> -->
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+
+  // Full list of configuration options available at:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    parallaxBackgroundImage: "./images/parallax.jpg",
+
+    // Parallax background size
+    parallaxBackgroundSize: "3000px 1694px", // - currently only pixels are supported (don't use % or auto)
+
+    // Number of pixels to move the parallax background per slide
+    // - Calculated automatically unless specified
+    // - Set to 0 to disable movement along an axis
+    // parallaxBackgroundHorizontal: 20,
+    // parallaxBackgroundVertical: 50,
+
+    slideNumber: true,
+    slideNumber: 'c/t',
+
+    transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+    // Optional reveal.js plugins
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  });
+
+  </script>
+
+</body>
+</html>
